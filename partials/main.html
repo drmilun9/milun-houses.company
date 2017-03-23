@@ -1,0 +1,155 @@
+ 
+ 
+<div class="container">
+
+
+  <div class="row">
+
+ <slick  dots="true" autoplay="true" responsive="breakpoints" slides-to-show=3 slides-to-scroll="1" init-onload="true" data="data" style="max-width:100%;">
+
+     <div ng-repeat="image in data" class="box">
+       
+          <img alt="{{image.title}}"  ng-src="{{image.acf.image.sizes.thumbnail}}"  style="z-index: -1;  width: 100%;"/>
+           
+ <input type="button" style="margin-top: -65px;" class="btn btn-md btn-success box" value="Details" ng-click="box3=!box3">
+
+              
+              <div >
+               {{image.acf.price | currency}}
+            
+             
+      
+
+             
+
+
+              <div style="margin-top: -50px; margin-left:20%;  font-size:17px; color: white;">   
+                     {{image.title.rendered}}
+              </div>
+
+            
+        </div>
+
+    </slick>
+             
+  </div><!--row-->
+ 
+      
+   
+   <div class="row" style="margin-bottom: 200px !important;"> 
+ 
+     
+     <div>
+      
+        <h3>Search by : </h3>
+        <select ng-model="searchBy">
+            <option value="">Select</option>
+            <option value="one-floor">Houses with one floor</option>
+            <option value="two-floors">Houses with two floors</option>
+            
+        </select>
+         <strong><a href="" data-ng-click="resetFilters()">Show All</a></strong>
+   
+    </div><!--style-->
+
+   </div><!--row-->
+
+
+
+
+    <div class="row">
+
+      <!-- Min and Max Price Selection -->
+      <div class="col-sm-12 price-form">      
+        
+        <div class="col-sm-6">
+            <div class="input-group">
+              <span class="input-group-addon">Min Price</span>
+             <select ng-model="priceInfoMin" class="form-control">
+                    <option ng-repeat="crib in data | orderBy : 'acf.price'" value="{{crib.acf.price}}">{{crib.acf.price | currency}}</option>
+            </select>
+            </div>          
+          </div>
+
+          <div class="col-sm-6">
+            <div class="input-group">
+              <span class="input-group-addon">Max Price</span>
+             <select ng-model="priceInfoMax" class="form-control">
+                    <option ng-repeat="crib in data | orderBy : 'acf.price'" value="{{crib.acf.price}}">{{crib.acf.price | currency}}</option>
+            </select>
+            </div>          
+          </div>
+       
+      </div><!--price-form-->
+
+    </div><!--row-->
+
+
+
+
+
+     <!-- Real Estate Listings -->
+    <div class="row">
+      <div class="col-sm-4" 
+        ng-repeat="crib in data | filter:searchBy | cribsFilter:priceInfoMin:priceInfoMax | orderBy : 'acf.price' | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit"> 
+                
+        <div class="thumbnail">
+          <img data-ng-src="{{crib.acf.image.sizes.medium}}" alt="">
+          <div class="caption">
+                      <div ng-hide="showDetails === true">
+                        <h3><i class="glyphicon glyphicon-tag"></i> {{crib.acf.price | currency}}</h3>
+                    
+                          
+                        </h4>
+
+                      </div>             
+
+                      <button class="btn btn-sm btn-success" 
+                              ng-hide="showDetails === true" 
+                              ng-click="showDetails = !showDetails">
+                              Details
+                      </button>
+
+
+                      <button class="btn btn-sm btn-danger" 
+                              ng-show="showDetails === true"
+                              ng-click="showDetails = !showDetails">
+                              Close
+                      </button>
+
+                        <div class="details" ng-show="showDetails === true">
+                          <h4>
+                            <span class="label label-primary">Beds: {{crib.details.bedrooms}}</span>
+                            <span class="label label-primary">Baths: {{crib.details.bathrooms}}</span>
+                            <span class="label label-primary">SqFt: {{crib.details.area}}</span>
+                          </h4>
+                          <p ng-bind-html="crib.content.rendered"></p> 
+
+                        </div>
+            
+           
+        <p class="details" ng-hide="!myCheck"> 
+            
+         </p>
+
+            
+
+          </div><!--caption--> 
+        </div><!--thumbnail-->
+      </div><!--col-sm-4-->          
+    </div><!--row-->
+
+   
+
+ <div class="row"> 
+  
+  <button class="btn btn-primary btn-lg" ng-click="reset()">Back to start</button>
+
+
+  <pagination uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="entryLimit" max-size="noOfPages"></pagination>
+    <pre>The selected page no: {{currentPage}}</pre>
+ 
+ </div>  
+
+
+</div><!--container-->
