@@ -1,10 +1,4 @@
-/*!
-Theme Name: Angular and Wordpress
-Description: Frontend angular and back and wordpress
-Version: 1.0
-Author: Milunovic Dragan
-Author URI: http://www.milunovic-dragan.com
-*/
+
 
 .price-form {
   margin-bottom: 10px;
@@ -42,41 +36,7 @@ Author URI: http://www.milunovic-dragan.com
     display: none;
   }*/
 
-.slick-prev{
-  position: absolute;
-  margin-left:26%;
-   background-color: blue;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  color: white; 
-}
-.slick-next{
-  position: absolute;
-  margin-left:69%;
-  background-color: blue;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  color: white; 
-}
-ul.slick-dots li{
-  position: relative;
-  list-style-type: none;
-  margin-top: 0px;
-  margin-left: 31%;
-   
 
-}
-
-ul.slick-dots li button{
-   float: left !important;
-   display: inline !important;
-   -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    background-color: lightblue;
-}
 
 
 

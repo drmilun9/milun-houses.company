@@ -11,33 +11,19 @@ var runSequence 	= require('run-sequence');
 
 var buildDir 		= 'bin/';
 var depsJS 			= ['bower_components/jquery/dist/jquery.min.js',
-                      "src/js/modernizr-custom.js",
+                      "js/modernizr-custom.js",
 					'bower_components/bootstrap/dist/js/bootstrap.min.js',
 					'bower_components/angular/angular.min.js',
 					'bower_components/angular-route/angular-route.min.js'];
 var appJS 			= [ 
-                        'src/js/general/app.js',
+                        'js/app.js',
 						
-						'src/js/general/configs.js',
+						'js/configs.js',
 						
-						'src/js/general/phases.sidebar.directive.js',
+						'js/controllers.js',
 					
-				        'src/js/allfilms/*.js', 
-						'src/js/home/*.js',
-						'src/js/phases/*.js',
-						'src/js/upcomingfilms/*.js',
-						'src/js/nextfilm/*.js',
-						'src/js/phases1/*.js',
-						'src/js/phases2/*.js',
-						'src/js/phases3/*.js',
-						'src/js/contact/*.js',
-                         
-
-                         //for slider
-                         "src/js/slider/TweenMax.min.js",
-                         "src/js/slider/angular-animate.min.js",
-                         "src/js/slider/angular-touch.min.js",
-                         "src/js/slider/slideviewer.js"
+				        'js/filters.js', 
+						'js/directives.js'
 						];
 
 /** tasks **/
@@ -56,24 +42,24 @@ gulp.task("devJS", function(){
 
 
 gulp.task('minify', function() {
-  return gulp.src('src/partials/partials/*.html')
+  return gulp.src('partials/partials/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('src/partials'))
+    .pipe(gulp.dest('partials'))
 });
 
 
 /*******sass tasks********/
 gulp.task("sass", function(){
-	return gulp.src(["src/sass/**/*.scss"])
+	return gulp.src(["sass/*.scss"])
 	.pipe(sass().on('error', sass.logError))
-	.pipe(gulp.dest("src/css/"));
+	.pipe(gulp.dest("css/style.css"));
 });
 
 
 gulp.task("devCSS", function(){
-	return gulp.src(["bower_components/bootstrap/dist/css/bootstrap.min.css",
-		             "src/css/slideviewer.css",
-		             "src/css/styles.css"
+	return gulp.src(["css/theme.css",
+		             "bower_components/bootstrap/dist/css/bootstrap.min.css",
+		            "css/styles.css"
 		            ])
 	.pipe(concat("style.css"))
 	.pipe(gulp.dest(""));
