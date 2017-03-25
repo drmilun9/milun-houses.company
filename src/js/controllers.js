@@ -39,7 +39,7 @@ $scope.$watchGroup('dataa', function (newVal, oldVal) {
     $scope.currentPage = 1;
   }, true);  
 
-});
+});  
 
 
  
@@ -86,7 +86,7 @@ app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $
    
 
 
-  });
+  }); 
 
 
 
@@ -96,3 +96,4 @@ app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $
 
 
 }]);
+ 

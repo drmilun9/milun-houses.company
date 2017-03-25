@@ -1,4 +1,4 @@
- 
+
  
 <div class="container">
 
@@ -7,25 +7,47 @@
 
  <slick  dots="true" autoplay="true" responsive="breakpoints" slides-to-show=3 slides-to-scroll="1" init-onload="true" data="data" style="max-width:100%;">
 
-     <div ng-repeat="image in data" class="box">
+     <div ng-repeat="image in data" style="max-height: 365px !important;">
        
           <img alt="{{image.title}}"  ng-src="{{image.acf.image.sizes.thumbnail}}"  style="z-index: -1;  width: 100%;"/>
            
- <input type="button" style="margin-top: -65px;" class="btn btn-md btn-success box" value="Details" ng-click="box3=!box3">
 
-              
-              <div >
-               {{image.acf.price | currency}}
-            
-             
+
+                <div style="position: absolute; bottom: 0px;" >
+                     <button class="btn btn-sm btn-success" 
+                              ng-hide="showDetails === true" 
+                              ng-click="showDetails = !showDetails">
+                              Details
+                      </button>
+
+
+                      <button class="btn btn-sm btn-danger" 
+                              ng-show="showDetails === true"
+                              ng-click="showDetails = !showDetails">
+                              Close
+                      </button>
+
+                        <div class="details" ng-show="showDetails === true">
+                          <h4>
+                            <span class="label label-primary">Beds: {{crib.details.bedrooms}}</span>
+                            <span class="label label-primary">Baths: {{crib.details.bathrooms}}</span>
+                            <span class="label label-primary">SqFt: {{crib.details.area}}</span>
+                          </h4>
+                          <p ng-bind-html="crib.content.rendered"></p> 
+
+                        </div>    
+                        
+
+                        <div style="font-size:17px; color: white; float: right; margin-left: 15px;">   
+                             {{image.title.rendered}}
+                        </div>
+                  </div>
       
 
-             
+              
 
 
-              <div style="margin-top: -50px; margin-left:20%;  font-size:17px; color: white;">   
-                     {{image.title.rendered}}
-              </div>
+              
 
             
         </div>
@@ -153,3 +175,5 @@
 
 
 </div><!--container-->
+
+

@@ -6,6 +6,8 @@
   <title>AngularJS Tutorial</title>
 <base href="http://localhost/ang-free-tut/wordpress/">
 
+
+
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -17,7 +19,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.3/ui-bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.3/ui-bootstrap-tpls.min.js"></script>
  
- <script type="text/javascript" src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/app.js"></script>
+ <script type="text/javascript" src="<?php echo esc_url( get_template_directory_uri() ); ?>/src/js/app.js"></script>
   
 
 <link rel="stylesheet" type="text/css" href="<?php echo esc_url( get_template_directory_uri() ); ?>/style.css">
@@ -25,5 +27,5 @@
   </head>
   
   <body ng-app="site" data-ng-controller="mainController">
-
-<!--<navbar></navbar>-->
+    <div data-ng-controller="Content">
+<h3>hello from header</h3>

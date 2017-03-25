@@ -1,2 +1,2 @@
-var app = angular.module("site", ['ngRoute','slick', "ngSanitize","ui.bootstrap","ngAnimate"]);
+var app = angular.module("site", ["ngRoute","slick", "ngSanitize","ui.bootstrap","ngAnimate"]);
 

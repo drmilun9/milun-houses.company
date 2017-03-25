@@ -2,8 +2,8 @@
    
    <!--<div ng-controller="Content">-->
 
-    <div ng-view></div>
-
+    <div data-ng-view></div>
+<h3>hello</h3>
    <!--</div>--> 
   
   <?php get_footer(); ?>

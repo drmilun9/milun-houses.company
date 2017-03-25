@@ -6,27 +6,52 @@ var ngdocs 			= require('gulp-ngdocs');
 var sass 			= require('gulp-sass');
 var uglify 			= require('gulp-uglify');
 var htmlmin         = require('gulp-htmlmin');
-var runSequence 	= require('run-sequence');
+var gulpSequence = require('gulp-sequence');
+var Server = require('karma').Server;
 
 
 var buildDir 		= 'bin/';
 var depsJS 			= ['bower_components/jquery/dist/jquery.min.js',
-                      "js/modernizr-custom.js",
-					'bower_components/bootstrap/dist/js/bootstrap.min.js',
-					'bower_components/angular/angular.min.js',
-					'bower_components/angular-route/angular-route.min.js'];
+                      
+					//'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+					//'bower_components/angular/angular.min.js',
+					//'bower_components/angular-route/angular-route.min.js',
+					//"bower_components/angular-animate/angular-animate.min.js",
+					//"bower_components/ui-bootstrap-tpls-2.5.0.js.js",
+                   "bower_components/slick-carousel/slick/slick.min.js",
+                    "bower_components/angular-slick/dist/slick.js"
+					];
 var appJS 			= [ 
-                        'js/app.js',
+                        //'src/js/app.js',
 						
-						'js/configs.js',
+						'src/js/config.js',
 						
-						'js/controllers.js',
+						'src/js/controllers.js',
 					
-				        'js/filters.js', 
-						'js/directives.js'
+				        'src/js/filters.js'
 						];
 
 /** tasks **/
+/**
+ * Run test once and exit
+ */
+gulp.task('test', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
+/**
+ * Watch for file changes and re-run tests on each change
+ */
+gulp.task('tdd', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js'
+  }, done).start();
+});
+
+
 gulp.task("devDeps", function(){
 	var depsjs = gulp.src(depsJS);
 	return depsjs.pipe(concat("md_deps.js"))
@@ -42,24 +67,26 @@ gulp.task("devJS", function(){
 
 
 gulp.task('minify', function() {
-  return gulp.src('partials/partials/*.html')
+  return gulp.src('src/partials/partials/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest('partials'))
+    .pipe(gulp.dest('src/partials'))
 });
 
 
 /*******sass tasks********/
 gulp.task("sass", function(){
-	return gulp.src(["sass/*.scss"])
+	return gulp.src([
+		             "src/sass/**/*.scss"])
 	.pipe(sass().on('error', sass.logError))
-	.pipe(gulp.dest("css/style.css"));
+	.pipe(gulp.dest("src/css/"));
 });
 
 
 gulp.task("devCSS", function(){
-	return gulp.src(["css/theme.css",
-		             "bower_components/bootstrap/dist/css/bootstrap.min.css",
-		            "css/styles.css"
+	return gulp.src(["src/css/theme.css",
+		             
+		            
+                     "src/css/style.css"
 		            ])
 	.pipe(concat("style.css"))
 	.pipe(gulp.dest(""));
@@ -70,20 +97,18 @@ gulp.task("devCSS", function(){
 
 
 
-/****Initialize*******/
-
 gulp.task("default", function(callback){
-     runSequence("devDeps", "devJS","minify","sass", "devCSS", callback);
+     gulpSequence("minify","devJS","devDeps", "devCSS","sass","tdd", callback);
 });
-
-
 
 gulp.task("watch", function(){
     
-    gulp.watch("src/js/**/*.js", ["devJS"]);
+   
+    gulp.watch("src/js/*.js", ["devJS"]);
     gulp.watch("src/partials/partials/*.html", ["minify"]);
-    gulp.watch("src/**/*.scss", ["sass"]);
+    gulp.watch("src/sass/**/*.scss", ["sass"]);
     gulp.watch("src/css/*.css", ["devCSS"]);
+    gulp.watch("src/js/*.js",  ["tdd"]);
    
     
  });
