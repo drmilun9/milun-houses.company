@@ -1,3 +1,6 @@
+var app = angular.module("site", ["ngRoute","slick", "ngSanitize","ui.bootstrap","ngAnimate"]);
+
+
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
     //$locationProvider.hashPrefix('');
@@ -114,6 +117,12 @@ app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $
 
 }]);
  
+
+
+app.controller("expCtrl", ["$scope", function($scope){
+    
+    $scope.message = "nany"; 
+}]); 
 app.filter('cribsFilter', function() {
  
          

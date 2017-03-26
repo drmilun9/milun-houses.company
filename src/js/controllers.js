@@ -97,3 +97,9 @@ app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $
 
 }]);
  
+
+
+app.controller("expCtrl", ["$scope", function($scope){
+    
+    $scope.message = "nany"; 
+}]); 

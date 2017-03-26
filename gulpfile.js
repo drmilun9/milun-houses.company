@@ -11,18 +11,22 @@ var Server = require('karma').Server;
 
 
 var buildDir 		= 'bin/';
-var depsJS 			= ['bower_components/jquery/dist/jquery.min.js',
-                      
-					//'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-					//'bower_components/angular/angular.min.js',
-					//'bower_components/angular-route/angular-route.min.js',
-					//"bower_components/angular-animate/angular-animate.min.js",
-					//"bower_components/ui-bootstrap-tpls-2.5.0.js.js",
+var depsJS 			= ["bower_components/jquery/dist/jquery.js",
+					    "bower_components/angular/angular.js",
+					    "bower_components/angular-route/angular-route.js",
+					  
+					   
+					    "bower_components/angular-sanitize/angular-sanitize.js", 
+					   
+					    "bower_components/angular-bootstrap/ui-bootstrap.js",
+					     "bower_components/angular-bootstrap/ui-bootstrap-tpls.js", 
+					    "bower_components/angular-animate/angular-animate.js",
+					    
                    "bower_components/slick-carousel/slick/slick.min.js",
                     "bower_components/angular-slick/dist/slick.js"
 					];
 var appJS 			= [ 
-                        //'src/js/app.js',
+                        'src/js/app.js',
 						
 						'src/js/config.js',
 						
