@@ -27,12 +27,15 @@ module.exports = function(config) {
     
     'src/js/app.js',
     'src/js/config.js',
-    'src/js/controllers.js',
+    'src/js/controllers/*.js',
     'src/js/filters.js',
-    'test-karma/*.js'
+    'src/js/service.js',
+    'test-karma/**/*.js'
     //'src/js/controllers-spec.js'
     ],
 
+
+    
 
     // list of files to exclude
     exclude: [
@@ -44,7 +47,7 @@ module.exports = function(config) {
     preprocessors: {
     },
 
-
+   
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter

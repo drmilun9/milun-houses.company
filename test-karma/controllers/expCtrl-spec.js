@@ -29,7 +29,7 @@ describe("expCtrl", function(){
 */
 
 describe("it should describe controller", function(){
-	describe("Testing Angular Cotnroller", function(){
+	describe("Testing expCtrl", function(){
        beforeEach(module("site"));
         
       var scope= {};

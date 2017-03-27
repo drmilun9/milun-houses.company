@@ -18,13 +18,69 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		redirectTo: '/'
 	});
 }]);  
-app.controller("mainController", ['$scope', '$http', '$routeParams',"filterFilter","$route",
- function($scope, $http, $routeParams, filterFilter, $route) {
- $http.get('wp-json/wp/v2/posts/?per_page=20').success(function(res){
-        $scope.data = res;
 
-      
+app.service("myService", ["$http" , "$q",   function($http , $q ){
+         
+          var deffered = $q.defer();
+
+          $http.get("wp-json/wp/v2/posts/?per_page=20").then(function(data){
+
+          	deffered.resolve(data);
+          
+          });
+
+          this.getData = function(){
+
+          	return deffered.promise;
+          }
+	}]);
+
+//Content controller FOR SLIDER
+app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http, $stateParams) {
+  $http.get('wp-json/wp/v2/posts?filter[name]=' + $routeParams.slug).success(function(res){
+    $scope.post = res[0];
+    document.querySelector('title').innerHTML = res.title + ' | AngularJS Demo Theme';
+
+
+     });
+    $http.get('wp-json/wp/v2/media?filter[post_parent]=' + $routeParams.slug).success(function(res){
+      //if ( res.length > 1 ) {
+        $scope.media = res;
+      //}
+    });
+    $http.get('wp-json/wp/v2/posts/?filter[name]=' + $routeParams.slug).success(function(res){
+    $scope.posts = res;
+    
+    
+   
+
+
+  }); 
+
+}]);
+app.controller("expCtrl", ["$scope", function($scope){
+    
+    $scope.message = "nany"; 
+}]); 
+app.controller("mainController", ['$scope','$routeParams',"filterFilter","$route","myService",
+ function($scope, $routeParams, filterFilter, $route, myService) {
+    
+
+
+
+        
+          
+
+
+  var promise = myService.getData();
+
+  promise.then(function(data){  
   
+    
+
+    $scope.data = data.data;
+
+    console.log($scope.data.data);
 
 
     $scope.reset = function(){window.location.reload();}
@@ -59,13 +115,13 @@ $scope.$watchGroup('dataa', function (newVal, oldVal) {
     $scope.currentPage = 1;
   }, true);  
 
-});  
+});
 
 
- 
-//for slick slider
-//$scope.box3 = false;
 
+}]);
+
+app.controller("mySlickController", ["$scope", function($scope){
 $scope.breakpoints = [
   {
     breakpoint: 768,
@@ -83,46 +139,6 @@ $scope.breakpoints = [
 ];
 
 }]);
-
-
-
-//Content controller FOR SLIDER
-app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http, $stateParams) {
-  $http.get('wp-json/wp/v2/posts?filter[name]=' + $routeParams.slug).success(function(res){
-    $scope.post = res[0];
-    document.querySelector('title').innerHTML = res.title + ' | AngularJS Demo Theme';
-
-
-     });
-    $http.get('wp-json/wp/v2/media?filter[post_parent]=' + $routeParams.slug).success(function(res){
-      //if ( res.length > 1 ) {
-        $scope.media = res;
-      //}
-    });
-    $http.get('wp-json/wp/v2/posts/?filter[name]=' + $routeParams.slug).success(function(res){
-    $scope.posts = res;
-    
-    
-   
-
-
-  }); 
-
-
-
-
-
-
-
-
-}]);
- 
-
-
-app.controller("expCtrl", ["$scope", function($scope){
-    
-    $scope.message = "nany"; 
-}]); 
 app.filter('cribsFilter', function() {
  
          
