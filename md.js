@@ -21,20 +21,60 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
 app.service("myService", ["$http" , "$q",   function($http , $q ){
          
-          var deffered = $q.defer();
+    
+   return {
 
-          $http.get("wp-json/wp/v2/posts/?per_page=20").then(function(data){
+		   getData: function() {
 
-          	deffered.resolve(data);
-          
-          });
+		     var deferred = $q.defer();
 
-          this.getData = function(){
+		     $http.get("wp-json/wp/v2/posts/?per_page=20")
 
-          	return deffered.promise;
-          }
-	}]);
+		       .success(function(data) { 
 
+		          deferred.resolve(data);
+
+		       }).error(function(msg, code) {
+
+		          deferred.reject(msg);
+
+		          $log.error(msg, code);
+
+		       });
+
+		     return deferred.promise;
+
+		   }
+
+  }
+
+}]);
+/*
+app.factory('myService', function ($q, $http) {
+	var service = {};
+
+	service.getData = function() {
+    // We make use of Angular's $q library to create the deferred instance
+		var deferred = $q.defer();
+
+  	$http.get("wp-json/wp/v2/posts/?per_page=20")
+    		.success(function(data) {
+          // The promise is resolved once the HTTP call is successful.
+      		deferred.resolve(data);
+    		})
+    		.error(function() {
+          // The promise is rejected if there is an error with the HTTP call.
+      		deferred.reject();
+    		});
+
+    // The promise is returned to the caller
+  	return deferred.promise;
+	};
+
+	return service;
+});
+
+*/
 //Content controller FOR SLIDER
 app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http, $stateParams) {
   $http.get('wp-json/wp/v2/posts?filter[name]=' + $routeParams.slug).success(function(res){
@@ -78,9 +118,9 @@ app.controller("mainController", ['$scope','$routeParams',"filterFilter","$route
   
     
 
-    $scope.data = data.data;
+    $scope.data = data;  
 
-    console.log($scope.data.data);
+    console.log($scope.data);
 
 
     $scope.reset = function(){window.location.reload();}

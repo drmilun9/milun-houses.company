@@ -110,11 +110,11 @@ gulp.task("default", function(callback){
 gulp.task("watch", function(){
     
    
-    gulp.watch("src/js/*.js", ["devJS"]);
+    gulp.watch("src/js/**/*.js", ["devJS"]);
     gulp.watch("src/partials/partials/*.html", ["minify"]);
     gulp.watch("src/sass/**/*.scss", ["sass"]);
     gulp.watch("src/css/*.css", ["devCSS"]);
-    gulp.watch("src/js/*.js",  ["tdd"]);
+    gulp.watch("src/js/**/*.js",  ["tdd"]);
    
     
  });

@@ -14,9 +14,9 @@ app.controller("mainController", ['$scope','$routeParams',"filterFilter","$route
   
     
 
-    $scope.data = data.data;
+    $scope.data = data;  
 
-    console.log($scope.data.data);
+    console.log($scope.data);
 
 
     $scope.reset = function(){window.location.reload();}
