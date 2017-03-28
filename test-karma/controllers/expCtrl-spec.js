@@ -45,7 +45,7 @@ describe("it should describe controller", function(){
           expect(scope.message).toBe("nany");
 
           
-      }); 
+      });
 
 
 

@@ -12,9 +12,31 @@ app.controller("mainController", ['$scope','$routeParams',"filterFilter","$route
 
   promise.then(function(data){  
   
-    
 
-    $scope.data = data;  
+  
+
+
+
+    $scope.data = data;
+
+
+
+
+  //slectHouse function
+  $scope.house = {};
+  $scope.selectHouse = function(index){
+    //console.log("hello" + index);
+    $scope.house = index;
+    //console.log($scope.house.acf.price);
+  } 
+
+
+
+
+
+
+
+
 
     console.log($scope.data);
 
@@ -54,5 +76,22 @@ $scope.$watchGroup('dataa', function (newVal, oldVal) {
 });
 
 
+
+
+$scope.breakpoints = [
+  {
+    breakpoint: 768,
+    settings: {
+      slidesToShow: 2,
+      slidesToScroll: 2
+    }
+  }, {
+    breakpoint: 480,
+    settings: {
+      slidesToShow: 1,
+      slidesToScroll: 1
+    }
+  }
+];
 
 }]);

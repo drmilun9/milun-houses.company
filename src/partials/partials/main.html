@@ -14,29 +14,11 @@
 
 
                 <div style="position: absolute; bottom: 0px;" >
-                     <button class="btn btn-sm btn-success" 
-                              ng-hide="showDetails === true" 
-                              ng-click="showDetails = !showDetails">
+                     <button class="btn btn-sm btn-success"
+                              data-toggle="modal" data-target="#myModal"  
+                              ng-click="selectHouse(image)">
                               Details
                       </button>
-
-
-                      <button class="btn btn-sm btn-danger" 
-                              ng-show="showDetails === true"
-                              ng-click="showDetails = !showDetails">
-                              Close
-                      </button>
-
-                        <div class="details" ng-show="showDetails === true">
-                          <h4>
-                            <span class="label label-primary">Beds: {{crib.details.bedrooms}}</span>
-                            <span class="label label-primary">Baths: {{crib.details.bathrooms}}</span>
-                            <span class="label label-primary">SqFt: {{crib.details.area}}</span>
-                          </h4>
-                          <p ng-bind-html="crib.content.rendered"></p> 
-
-                        </div>    
-                        
 
                         <div style="font-size:17px; color: white; float: right; margin-left: 15px;">   
                              {{image.title.rendered}}
@@ -116,52 +98,63 @@
         ng-repeat="crib in data | filter:searchBy | cribsFilter:priceInfoMin:priceInfoMax | orderBy : 'acf.price' | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit"> 
                 
         <div class="thumbnail">
-          <img data-ng-src="{{crib.acf.image.sizes.medium}}" alt="">
-          <div class="caption">
-                      <div ng-hide="showDetails === true">
-                        <h3><i class="glyphicon glyphicon-tag"></i> {{crib.acf.price | currency}}</h3>
-                    
-                          
-                        </h4>
+               <div style="position: relative;">
+                
+                   <img data-ng-src="{{crib.acf.image.sizes.medium}}" alt="">
+                   
+                   <p class="title"><strong>{{crib.title.rendered}}</strong></p>
 
-                      </div>             
+                
+                    <h3><i class="glyphicon glyphicon-tag"></i> {{crib.acf.price | currency}}</h3>
+  
 
-                      <button class="btn btn-sm btn-success" 
-                              ng-hide="showDetails === true" 
-                              ng-click="showDetails = !showDetails">
-                              Details
-                      </button>
+                  <button class="btn btn-sm btn-success" 
+                         data-toggle="modal" data-target="#myModal" ng-click="selectHouse(crib)">
+                          Details
+                  </button>
 
 
-                      <button class="btn btn-sm btn-danger" 
-                              ng-show="showDetails === true"
-                              ng-click="showDetails = !showDetails">
-                              Close
-                      </button>
-
-                        <div class="details" ng-show="showDetails === true">
-                          <h4>
-                            <span class="label label-primary">Beds: {{crib.details.bedrooms}}</span>
-                            <span class="label label-primary">Baths: {{crib.details.bathrooms}}</span>
-                            <span class="label label-primary">SqFt: {{crib.details.area}}</span>
-                          </h4>
-                          <p ng-bind-html="crib.content.rendered"></p> 
-
-                        </div>
-            
-           
-        <p class="details" ng-hide="!myCheck"> 
-            
-         </p>
-
-            
-
-          </div><!--caption--> 
+          </div> 
         </div><!--thumbnail-->
+
+
+
       </div><!--col-sm-4-->          
     </div><!--row-->
 
-   
+  
+        <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{house.title.rendered}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+             <div class="col-xs-8 col-xs-offset-2">
+                <img data-ng-src="{{house.acf.image.sizes.large}}" class="img-rounded img-responsive">
+             </div>
+        </div>
+        <div class="row" style="margin-top: 30px; margin-left: 20px;">
+            <p><strong>Price:</strong>{{house.acf.price | currency}}</p><br>
+            <p><strong>Desription:</strong><span ng-bind-html="house.content.rendered"></span></p>
+        </div>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
 
  <div class="row"> 
   

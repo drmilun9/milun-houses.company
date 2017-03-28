@@ -1,3 +1,19 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x- ng-cloak {
+  display: none !important; }
+
+.thumbnail {
+  position: relative; }
+  .thumbnail div img,
+  .thumbnail div h3,
+  .thumbnail div button {
+    margin-top: 5%;
+    margin-left: 13%; }
+  .thumbnail div p.title {
+    margin-top: -33px;
+    margin-left: 17%;
+    color: white;
+    font-size: 17px; }
+
 .slick-prev {
   position: absolute;
   margin-left: 26%;

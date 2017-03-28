@@ -20,6 +20,6 @@
 <?php wp_head(); ?>
   </head>
   
-  <body ng-app="site" data-ng-controller="mainController">
+  <body class="ng-cloak" ng-cloak ng-app="site" data-ng-controller="mainController">
     <div data-ng-controller="Content">
-<h3>hello from header</h3>
+
