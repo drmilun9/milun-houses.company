@@ -33,4 +33,39 @@ ul.slick-dots li{
             background-color: lightblue;
         }
 
+}
+
+
+@media screen and (max-width: 1200px) {
+    .slick-prev{
+        position: absolute;
+        margin-left:45%;
+      }
+      .slick-next{
+        position: absolute;
+        margin-left:55%;
+      }
+}  
+
+
+@media screen and (max-width: 768px) {
+    .slick-prev{
+        position: absolute;
+        margin-left:40%;
+      }
+      .slick-next{
+        position: absolute;
+        margin-left:60%;
+      }
+}  
+
+@media screen and (max-width: 480px) {
+    .slick-prev{
+        position: absolute;
+        margin-left:35%;
+      }
+      .slick-next{
+        position: absolute;
+        margin-left:65%;
+      }
 }  

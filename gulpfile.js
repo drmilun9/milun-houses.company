@@ -34,7 +34,9 @@ var appJS 			= [
 						
 						'src/js/controllers/*.js',
 					
-				        'src/js/filters.js'
+				        'src/js/filters.js',
+
+				        "src/js/jquery/*js"
 						];
 
 /** tasks **/

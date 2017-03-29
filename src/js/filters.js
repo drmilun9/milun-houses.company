@@ -1,4 +1,4 @@
-app.filter('cribsFilter', function() {
+app.filter('mainFilter', function() {
  
          
        return function(listings, priceInfoMin, priceInfoMax,price) {

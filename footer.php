@@ -10,8 +10,10 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-</div><!--content-->
+     </div>  
+   </div>
+ </div><!--mainController-->
+</div><!--loadingController-->
  </body>
 
   </html>

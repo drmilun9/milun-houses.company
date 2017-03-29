@@ -102,6 +102,12 @@ app.controller("expCtrl", ["$scope", function($scope){
     
     $scope.message = "nany"; 
 }]); 
+app.controller("loadingController", [ '$scope', '$timeout', function($scope, $timeout) {
+    $scope.loaded = false;    
+    $scope.title = "This is an App";
+
+    $timeout(function() { $scope.loaded = true; }, 12000);
+}]);  
 app.controller("mainController", ['$scope','$routeParams',"filterFilter","$route","myService",
  function($scope, $routeParams, filterFilter, $route, myService) {
     
@@ -132,7 +138,7 @@ app.controller("mainController", ['$scope','$routeParams',"filterFilter","$route
     //console.log("hello" + index);
     $scope.house = index;
     //console.log($scope.house.acf.price);
-  } 
+  }  
 
 
 
@@ -183,17 +189,25 @@ $scope.$watchGroup('dataa', function (newVal, oldVal) {
 
 
 $scope.breakpoints = [
+   {
+    breakpoint: 1200,
+    settings: {
+      dots: false
+    }
+  },
   {
     breakpoint: 768,
     settings: {
       slidesToShow: 2,
-      slidesToScroll: 2
+      slidesToScroll: 2,
+      dots: false
     }
   }, {
     breakpoint: 480,
     settings: {
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+       dots: false
     }
   }
 ];
@@ -218,7 +232,7 @@ $scope.breakpoints = [
 ];
 
 }]);
-app.filter('cribsFilter', function() {
+app.filter('mainFilter', function() {
  
          
        return function(listings, priceInfoMin, priceInfoMax,price) {

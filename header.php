@@ -20,6 +20,15 @@
 <?php wp_head(); ?>
   </head>
   
-  <body class="ng-cloak" ng-cloak ng-app="site" data-ng-controller="mainController">
-    <div data-ng-controller="Content">
+  <body ng-app="site">
+ 
+ <div ng-controller="loadingController">
+
+ <div class="spinner" ng-hide="loaded"></div>
+     
+     <div ng-cloak="" ng-show="loaded">
+ 
+        <div data-ng-controller="mainController"> 
+ 
+           <div data-ng-controller="Content">
 

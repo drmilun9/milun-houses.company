@@ -24,15 +24,7 @@
                              {{image.title.rendered}}
                         </div>
                   </div>
-      
-
-              
-
-
-              
-
-            
-        </div>
+           </div>
 
     </slick>
              
@@ -40,7 +32,7 @@
  
       
    
-   <div class="row" style="margin-bottom: 200px !important;"> 
+   <div class="row" style="margin-bottom: 50px !important;"> 
  
      
      <div>
@@ -52,7 +44,7 @@
             <option value="two-floors">Houses with two floors</option>
             
         </select>
-         <strong><a href="" data-ng-click="resetFilters()">Show All</a></strong>
+         
    
     </div><!--style-->
 
@@ -70,7 +62,7 @@
             <div class="input-group">
               <span class="input-group-addon">Min Price</span>
              <select ng-model="priceInfoMin" class="form-control">
-                    <option ng-repeat="crib in data | orderBy : 'acf.price'" value="{{crib.acf.price}}">{{crib.acf.price | currency}}</option>
+                    <option ng-repeat="dat in data | orderBy : 'acf.price'" value="{{dat.acf.price}}">{{dat.acf.price | currency}}</option>
             </select>
             </div>          
           </div>
@@ -79,7 +71,7 @@
             <div class="input-group">
               <span class="input-group-addon">Max Price</span>
              <select ng-model="priceInfoMax" class="form-control">
-                    <option ng-repeat="crib in data | orderBy : 'acf.price'" value="{{crib.acf.price}}">{{crib.acf.price | currency}}</option>
+                    <option ng-repeat="dat in data | orderBy : 'acf.price'" value="{{dat.acf.price}}">{{dat.acf.price | currency}}</option>
             </select>
             </div>          
           </div>
@@ -95,21 +87,21 @@
      <!-- Real Estate Listings -->
     <div class="row">
       <div class="col-sm-4" 
-        ng-repeat="crib in data | filter:searchBy | cribsFilter:priceInfoMin:priceInfoMax | orderBy : 'acf.price' | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit"> 
+        ng-repeat="dat in data | filter:searchBy | mainFilter:priceInfoMin:priceInfoMax | orderBy : 'acf.price' | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit"> 
                 
         <div class="thumbnail">
                <div style="position: relative;">
                 
-                   <img data-ng-src="{{crib.acf.image.sizes.medium}}" alt="">
+                   <img data-ng-src="{{dat.acf.image.sizes.medium}}" class="img-rounded img-responsive">
                    
-                   <p class="title"><strong>{{crib.title.rendered}}</strong></p>
+                   <p class="title"><strong>{{dat.title.rendered}}</strong></p>
 
                 
-                    <h3><i class="glyphicon glyphicon-tag"></i> {{crib.acf.price | currency}}</h3>
+                    <h3><i class="glyphicon glyphicon-tag"></i> {{dat.acf.price | currency}}</h3>
   
 
                   <button class="btn btn-sm btn-success" 
-                         data-toggle="modal" data-target="#myModal" ng-click="selectHouse(crib)">
+                         data-toggle="modal" data-target="#myModal" ng-click="selectHouse(dat)">
                           Details
                   </button>
 
@@ -123,7 +115,7 @@
     </div><!--row-->
 
   
-        <!-- Modal -->
+        <!-- MODAL FOR DISPLAYING SINGLE HOUSES-->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -158,11 +150,11 @@
 
  <div class="row"> 
   
-  <button class="btn btn-primary btn-lg" ng-click="reset()">Back to start</button>
+  <button class="btn btn-danger btn-sm" ng-click="reset()">Back to start</button>
 
 
-  <pagination uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="entryLimit" max-size="noOfPages"></pagination>
-    <pre>The selected page no: {{currentPage}}</pre>
+  <pagination uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm pagination" items-per-page="entryLimit" max-size="noOfPages"></pagination>
+ 
  
  </div>  
 

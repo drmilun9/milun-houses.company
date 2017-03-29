@@ -16,7 +16,7 @@ describe("it should test main Filter", function(){
 
        //inject $filter to our test
     it('should be defined', (function() { 
-        expect($filter('cribsFilter')).not.toBeNull();
+        expect($filter('mainFilter')).not.toBeNull();
     }));
 
 

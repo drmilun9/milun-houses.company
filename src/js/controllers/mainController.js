@@ -28,7 +28,7 @@ app.controller("mainController", ['$scope','$routeParams',"filterFilter","$route
     //console.log("hello" + index);
     $scope.house = index;
     //console.log($scope.house.acf.price);
-  } 
+  }  
 
 
 
@@ -79,17 +79,25 @@ $scope.$watchGroup('dataa', function (newVal, oldVal) {
 
 
 $scope.breakpoints = [
+   {
+    breakpoint: 1200,
+    settings: {
+      dots: false
+    }
+  },
   {
     breakpoint: 768,
     settings: {
       slidesToShow: 2,
-      slidesToScroll: 2
+      slidesToScroll: 2,
+      dots: false
     }
   }, {
     breakpoint: 480,
     settings: {
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+       dots: false
     }
   }
 ];

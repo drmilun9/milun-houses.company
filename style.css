@@ -5,8 +5,49 @@ Version: 1.0
 Author: Milunovic Dragan
 Author URI: http://www.milunovic-dragan.com
 */
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x- ng-cloak {
+/** for pages that don't load angular but have angular templates in them. **/
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
+
+@-webkit-keyframes rotate360 {
+  from {
+    -webkit-transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg); } }
+
+/*
+.spinner {
+  display:inline-block;
+  border-radius: 50px;
+  border-style: solid;
+  border-bottom-color: #3b5641;
+  border-top-color: #67b3a9;
+  border-left-color: #df7950;
+  border-right-color: #decb3f;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  animation: rotate360 1s linear infinite;
+  -webkit-animation: rotate360 1s linear infinite;
+
+  border-width: 4px;
+  width: 24px;
+  height: 24px;
+}
+*/
+.spinner {
+  background-image: url(src/images/ajax-loader.gif);
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-top: 100px;
+  margin-top: 28%;
+  margin-left: 45%; }
 
 .thumbnail {
   position: relative; }
@@ -20,6 +61,45 @@ Author URI: http://www.milunovic-dragan.com
     margin-left: 17%;
     color: white;
     font-size: 17px; }
+
+@media screen and (max-width: 1200px) {
+  .thumbnail {
+    position: relative; }
+    .thumbnail div img,
+    .thumbnail div h3,
+    .thumbnail div button {
+      margin-left: 0%; } }
+
+@media screen and (max-width: 768px) {
+  .thumbnail {
+    position: relative; }
+    .thumbnail div img,
+    .thumbnail div h3,
+    .thumbnail div button {
+      margin-left: 30%; } }
+
+@media screen and (max-width: 468px) {
+  .thumbnail {
+    position: relative; }
+    .thumbnail div img,
+    .thumbnail div h3,
+    .thumbnail div button {
+      margin-left: 10%; } }
+
+@media screen and (max-width: 468px) {
+  .thumbnail {
+    position: relative; }
+    .thumbnail div img,
+    .thumbnail div h3,
+    .thumbnail div button {
+      margin-left: 0%; } }
+
+body {
+  background-image: url("src/images/background.jpg");
+  background-repeat: repeat; }
+
+.pagination {
+  margin-left: 30%; }
 
 .slick-prev {
   position: absolute;
@@ -51,6 +131,30 @@ ul.slick-dots li {
     -moz-border-radius: 5px;
     border-radius: 5px;
     background-color: lightblue; }
+
+@media screen and (max-width: 1200px) {
+  .slick-prev {
+    position: absolute;
+    margin-left: 45%; }
+  .slick-next {
+    position: absolute;
+    margin-left: 55%; } }
+
+@media screen and (max-width: 768px) {
+  .slick-prev {
+    position: absolute;
+    margin-left: 40%; }
+  .slick-next {
+    position: absolute;
+    margin-left: 60%; } }
+
+@media screen and (max-width: 480px) {
+  .slick-prev {
+    position: absolute;
+    margin-left: 35%; }
+  .slick-next {
+    position: absolute;
+    margin-left: 65%; } }
 
 .animate-show-hide.ng-hide {
   opacity: 0; }
