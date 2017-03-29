@@ -14,10 +14,6 @@ app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $
     $http.get('wp-json/wp/v2/posts/?filter[name]=' + $routeParams.slug).success(function(res){
     $scope.posts = res;
     
-    
-   
-
-
-  }); 
+    }); 
 
 }]);

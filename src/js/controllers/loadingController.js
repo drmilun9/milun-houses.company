@@ -1,4 +1,5 @@
-app.controller("loadingController", [ '$scope', '$timeout', function($scope, $timeout) {
+//FOR AJAX LOADER
+app.controller("loadingController", ['$scope', '$timeout', function($scope, $timeout) {
     $scope.loaded = false;    
     $scope.title = "This is an App";
 

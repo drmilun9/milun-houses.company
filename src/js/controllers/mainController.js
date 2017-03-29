@@ -3,58 +3,38 @@ app.controller("mainController", ['$scope','$routeParams',"filterFilter","$route
     
 
 
-
-        
-          
-
-
   var promise = myService.getData();
 
   promise.then(function(data){  
   
 
-  
+  $scope.data = data;
 
 
-
-    $scope.data = data;
-
-
-
-
-  //slectHouse function
+  //FOR BOOTSTRAP MODAL .....SINGLE HOUSE
   $scope.house = {};
   $scope.selectHouse = function(index){
-    //console.log("hello" + index);
+  
     $scope.house = index;
-    //console.log($scope.house.acf.price);
   }  
 
 
 
 
-
-
-
-
-
-    console.log($scope.data);
-
-
-    $scope.reset = function(){window.location.reload();}
+  $scope.reset = function(){window.location.reload();}
    
 
 
    $scope.priceInfoMin = 0;
-   $scope.priceInfoMax = 10000000; 
+   $scope.priceInfoMax = 10000000;
 
-// pagination controls
+
+
+  //FOR PAGINATION
   $scope.currentPage = 1;
   $scope.totalItems = $scope.data.length;
   $scope.entryLimit = 3; // items per page
   $scope.noOfPages = Math.ceil($scope.totalItems / $scope.entryLimit);
-
-
 
 
 $scope.dataa = ['priceInfoMin', 'priceInfoMax', 'searchBy'];
@@ -77,7 +57,7 @@ $scope.$watchGroup('dataa', function (newVal, oldVal) {
 
 
 
-
+//FOR SLIDER
 $scope.breakpoints = [
    {
     breakpoint: 1200,

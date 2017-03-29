@@ -1,16 +1,16 @@
-var app = angular.module("site", ["ngRoute","slick", "ngSanitize","ui.bootstrap","ngAnimate"]);
+var app = angular.module("site", ["ngRoute",'ngSanitize',"slick", "ngSanitize","ui.bootstrap","ngAnimate"]);
 
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
-    //$locationProvider.hashPrefix('');
+	
 	$routeProvider
 	.when('/', {
-		templateUrl: 'wp-content/themes/ang-free-tut/src/partials/partials/main.html',
+		templateUrl: 'wp-content/themes/ang-free-tut/src/partials/main.html',
 		controller: 'mainController'
 	})
     .when('/', {
-   		templateUrl: "wp-content/themes/ang-free-tut/src/partials/partials/main.html",
+   		templateUrl: "wp-content/themes/ang-free-tut/src/partials/main.html",
    		controller: 'Content'
    	})
 	
@@ -21,8 +21,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
 app.service("myService", ["$http" , "$q",   function($http , $q ){
          
-    
-   return {
+    return {
 
 		   getData: function() {
 
@@ -38,7 +37,7 @@ app.service("myService", ["$http" , "$q",   function($http , $q ){
 
 		          deferred.reject(msg);
 
-		          $log.error(msg, code);
+		          //$log.error(msg, code);
 
 		       });
 
@@ -49,32 +48,8 @@ app.service("myService", ["$http" , "$q",   function($http , $q ){
   }
 
 }]);
-/*
-app.factory('myService', function ($q, $http) {
-	var service = {};
 
-	service.getData = function() {
-    // We make use of Angular's $q library to create the deferred instance
-		var deferred = $q.defer();
 
-  	$http.get("wp-json/wp/v2/posts/?per_page=20")
-    		.success(function(data) {
-          // The promise is resolved once the HTTP call is successful.
-      		deferred.resolve(data);
-    		})
-    		.error(function() {
-          // The promise is rejected if there is an error with the HTTP call.
-      		deferred.reject();
-    		});
-
-    // The promise is returned to the caller
-  	return deferred.promise;
-	};
-
-	return service;
-});
-
-*/
 //Content controller FOR SLIDER
 app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http, $stateParams) {
   $http.get('wp-json/wp/v2/posts?filter[name]=' + $routeParams.slug).success(function(res){
@@ -91,18 +66,11 @@ app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $
     $http.get('wp-json/wp/v2/posts/?filter[name]=' + $routeParams.slug).success(function(res){
     $scope.posts = res;
     
-    
-   
-
-
-  }); 
+    }); 
 
 }]);
-app.controller("expCtrl", ["$scope", function($scope){
-    
-    $scope.message = "nany"; 
-}]); 
-app.controller("loadingController", [ '$scope', '$timeout', function($scope, $timeout) {
+//FOR AJAX LOADER
+app.controller("loadingController", ['$scope', '$timeout', function($scope, $timeout) {
     $scope.loaded = false;    
     $scope.title = "This is an App";
 
@@ -113,58 +81,38 @@ app.controller("mainController", ['$scope','$routeParams',"filterFilter","$route
     
 
 
-
-        
-          
-
-
   var promise = myService.getData();
 
   promise.then(function(data){  
   
 
-  
+  $scope.data = data;
 
 
-
-    $scope.data = data;
-
-
-
-
-  //slectHouse function
+  //FOR BOOTSTRAP MODAL .....SINGLE HOUSE
   $scope.house = {};
   $scope.selectHouse = function(index){
-    //console.log("hello" + index);
+  
     $scope.house = index;
-    //console.log($scope.house.acf.price);
   }  
 
 
 
 
-
-
-
-
-
-    console.log($scope.data);
-
-
-    $scope.reset = function(){window.location.reload();}
+  $scope.reset = function(){window.location.reload();}
    
 
 
    $scope.priceInfoMin = 0;
-   $scope.priceInfoMax = 10000000; 
+   $scope.priceInfoMax = 10000000;
 
-// pagination controls
+
+
+  //FOR PAGINATION
   $scope.currentPage = 1;
   $scope.totalItems = $scope.data.length;
   $scope.entryLimit = 3; // items per page
   $scope.noOfPages = Math.ceil($scope.totalItems / $scope.entryLimit);
-
-
 
 
 $scope.dataa = ['priceInfoMin', 'priceInfoMax', 'searchBy'];
@@ -187,7 +135,7 @@ $scope.$watchGroup('dataa', function (newVal, oldVal) {
 
 
 
-
+//FOR SLIDER
 $scope.breakpoints = [
    {
     breakpoint: 1200,
@@ -213,68 +161,37 @@ $scope.breakpoints = [
 ];
 
 }]);
-
-app.controller("mySlickController", ["$scope", function($scope){
-$scope.breakpoints = [
-  {
-    breakpoint: 768,
-    settings: {
-      slidesToShow: 2,
-      slidesToScroll: 2
-    }
-  }, {
-    breakpoint: 480,
-    settings: {
-      slidesToShow: 1,
-      slidesToScroll: 1
-    }
-  }
-];
-
-}]);
 app.filter('mainFilter', function() {
  
          
        return function(listings, priceInfoMin, priceInfoMax,price) {
             
             
-                        
-             //return helloFilter(currentPage);
-               
-              var filtered = [];
+            var filtered = [];
 
           
             
             var price = price;
             var priceInfoMin = priceInfoMin;
             var priceInfoMax = priceInfoMax; 
-             
-           // console.log("min "+priceInfoMin); 
-           // console.log("max "+priceInfoMax);
 
 
             angular.forEach(listings, function(listing) {
               
           
                      
-                if (listing.acf.price >= priceInfoMin && listing.acf.price <= priceInfoMax) {
+             if (listing.acf.price >= priceInfoMin && listing.acf.price <= priceInfoMax) {
 
                 filtered.push(listing);
                }
                  
-                //}         
-                   
-                 
                         
-                
-            });
+             });
              
             
            return filtered;    
           
-
-
-        }
+         }
     });
 
 
@@ -286,39 +203,11 @@ app.filter('startFrom', function() {
         return input.slice(start);
     }
 });
-/*app.filter('startFrom', function () {
-    return function (input, start) {
-        if (input) {
-            start = +start;
-            return input.slice(start);
-        }
-        return [];
-    };
-});
-*/
+
 
 
 app.filter('toTrusted', ['$sce', function($sce) {
         return function(text) {
             return $sce.trustAsHtml(text);
         };
-    }]);
-
-app.filter('hello',  function() {
-        return function(currentPage) {
-
-            
-            if (isNaN(currentPage)){
-                var currentPage = 2;
-                return currentPage;
-                console.log(currentPage);
-            }else{
-                var currentPage = 2;
-                return currentPage;
-                console.log(currentPage);
-            }
-            
-
-        };
-});
-
+}]);

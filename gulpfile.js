@@ -14,16 +14,12 @@ var buildDir 		= 'bin/';
 var depsJS 			= ["bower_components/jquery/dist/jquery.js",
 					    "bower_components/angular/angular.js",
 					    "bower_components/angular-route/angular-route.js",
-					   "bower_components/angular-mocks/angular-mocks.js", 
-					   
+					    "bower_components/angular-mocks/angular-mocks.js", 
 					    "bower_components/angular-sanitize/angular-sanitize.js", 
-					   
 					    "bower_components/angular-bootstrap/ui-bootstrap.js",
-					     "bower_components/angular-bootstrap/ui-bootstrap-tpls.js", 
-					    "bower_components/angular-animate/angular-animate.js",
-					    
-                   "bower_components/slick-carousel/slick/slick.min.js",
-                    "bower_components/angular-slick/dist/slick.js"
+					    "bower_components/angular-bootstrap/ui-bootstrap-tpls.js", 
+					    "bower_components/slick-carousel/slick/slick.min.js",
+                        "bower_components/angular-slick/dist/slick.js"
 					];
 var appJS 			= [ 
                         'src/js/app.js',
@@ -34,9 +30,7 @@ var appJS 			= [
 						
 						'src/js/controllers/*.js',
 					
-				        'src/js/filters.js',
-
-				        "src/js/jquery/*js"
+				        'src/js/filters.js'
 						];
 
 /** tasks **/
@@ -63,6 +57,7 @@ gulp.task('tdd', function (done) {
 gulp.task("devDeps", function(){
 	var depsjs = gulp.src(depsJS);
 	return depsjs.pipe(concat("md_deps.js"))
+	.pipe(uglify())
 	.pipe(gulp.dest(""));
 });
 

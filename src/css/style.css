@@ -2,45 +2,21 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
 
-@keyframes rotate360 {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
+body {
+  background-image: url("src/images/background.jpg");
+  background-repeat: repeat; }
 
-@-webkit-keyframes rotate360 {
-  from {
-    -webkit-transform: rotate(0deg); }
-  to {
-    -webkit-transform: rotate(360deg); } }
-
-/*
-.spinner {
-  display:inline-block;
-  border-radius: 50px;
-  border-style: solid;
-  border-bottom-color: #3b5641;
-  border-top-color: #67b3a9;
-  border-left-color: #df7950;
-  border-right-color: #decb3f;
-  text-align: center;
-  vertical-align: middle;
-  position: relative;
-  animation: rotate360 1s linear infinite;
-  -webkit-animation: rotate360 1s linear infinite;
-
-  border-width: 4px;
-  width: 24px;
-  height: 24px;
-}
-*/
 .spinner {
   background-image: url(src/images/ajax-loader.gif);
   background-repeat: no-repeat;
   background-position: left top;
   padding-top: 100px;
-  margin-top: 28%;
+  margin-top: 350px;
   margin-left: 45%; }
+
+.searching-floors {
+  margin-top: 70px !important;
+  margin-bottom: 70px !important; }
 
 .thumbnail {
   position: relative; }
@@ -77,19 +53,7 @@
     .thumbnail div img,
     .thumbnail div h3,
     .thumbnail div button {
-      margin-left: 10%; } }
-
-@media screen and (max-width: 468px) {
-  .thumbnail {
-    position: relative; }
-    .thumbnail div img,
-    .thumbnail div h3,
-    .thumbnail div button {
       margin-left: 0%; } }
-
-body {
-  background-image: url("src/images/background.jpg");
-  background-repeat: repeat; }
 
 .pagination {
   margin-left: 30%; }
@@ -148,63 +112,6 @@ ul.slick-dots li {
   .slick-next {
     position: absolute;
     margin-left: 65%; } }
-
-.animate-show-hide.ng-hide {
-  opacity: 0; }
-
-.animate-show-hide.ng-hide-add,
-.animate-show-hide.ng-hide-remove {
-  transition: all linear 1s; }
-
-@-webkit-keyframes details {
-  0% {
-    opacity: 0;
-    margin-top: 10px;
-    height: 0px; }
-  100% {
-    opacity: 1;
-    margin-top: 30px;
-    height: 120px; } }
-
-@-moz-keyframes details {
-  0% {
-    opacity: 0;
-    margin-top: 10px;
-    height: 0px; }
-  100% {
-    opacity: 1;
-    margin-top: 30px;
-    height: 120px; } }
-
-@-o-keyframes details {
-  0% {
-    opacity: 0;
-    margin-top: 10px;
-    height: 0px; }
-  100% {
-    opacity: 1;
-    margin-top: 30px;
-    height: 120px; } }
-
-@keyframes details {
-  0% {
-    opacity: 0;
-    margin-top: 10px;
-    height: 0px; }
-  100% {
-    opacity: 1;
-    margin-top: 30px;
-    height: 120px; } }
-
-.check-element {
-  -webkit-animation: details 1s;
-  -moz-animation: details 1s;
-  -o-animation: details 1s;
-  animation: details 1s;
-  background-color: lightblue;
-  margin-top: 30px;
-  height: 120px;
-  z-index: 100; }
 
 .price-form {
   margin-bottom: 10px;
