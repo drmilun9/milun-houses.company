@@ -34,5 +34,5 @@
  
         <div data-ng-controller="mainController"> 
  
-           <div data-ng-controller="Content">
+           <div data-ng-controller="sliderController">
 

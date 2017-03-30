@@ -11,7 +11,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	})
     .when('/', {
    		templateUrl: "wp-content/themes/ang-free-tut/src/partials/main.html",
-   		controller: 'Content'
+   		controller: 'sliderController'
    	})
 	
 	.otherwise({
@@ -50,31 +50,12 @@ app.service("myService", ["$http" , "$q",   function($http , $q ){
 }]);
 
 
-//Content controller FOR SLIDER
-app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http, $stateParams) {
-  $http.get('wp-json/wp/v2/posts?filter[name]=' + $routeParams.slug).success(function(res){
-    $scope.post = res[0];
-    document.querySelector('title').innerHTML = res.title + ' | AngularJS Demo Theme';
-
-
-     });
-    $http.get('wp-json/wp/v2/media?filter[post_parent]=' + $routeParams.slug).success(function(res){
-      //if ( res.length > 1 ) {
-        $scope.media = res;
-      //}
-    });
-    $http.get('wp-json/wp/v2/posts/?filter[name]=' + $routeParams.slug).success(function(res){
-    $scope.posts = res;
-    
-    }); 
-
-}]);
 //FOR AJAX LOADER
 app.controller("loadingController", ['$scope', '$timeout', function($scope, $timeout) {
     $scope.loaded = false;    
     $scope.title = "This is an App";
 
-    $timeout(function() { $scope.loaded = true; }, 12000);
+    $timeout(function() { $scope.loaded = true; }, 10000);
 }]);  
 app.controller("mainController", ['$scope','$routeParams',"filterFilter","$route","myService",
  function($scope, $routeParams, filterFilter, $route, myService) {
@@ -159,6 +140,25 @@ $scope.breakpoints = [
     }
   }
 ];
+
+}]);
+//Content controller FOR SLIDER
+app.controller('sliderController', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http, $stateParams) {
+  $http.get('wp-json/wp/v2/posts?filter[name]=' + $routeParams.slug).success(function(res){
+    $scope.post = res[0];
+    document.querySelector('title').innerHTML = res.title + ' | AngularJS Demo Theme';
+
+
+     });
+    $http.get('wp-json/wp/v2/media?filter[post_parent]=' + $routeParams.slug).success(function(res){
+      //if ( res.length > 1 ) {
+        $scope.media = res;
+      //}
+    });
+    $http.get('wp-json/wp/v2/posts/?filter[name]=' + $routeParams.slug).success(function(res){
+    $scope.posts = res;
+    
+    }); 
 
 }]);
 app.filter('mainFilter', function() {

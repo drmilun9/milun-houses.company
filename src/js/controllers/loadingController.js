@@ -3,5 +3,5 @@ app.controller("loadingController", ['$scope', '$timeout', function($scope, $tim
     $scope.loaded = false;    
     $scope.title = "This is an App";
 
-    $timeout(function() { $scope.loaded = true; }, 12000);
+    $timeout(function() { $scope.loaded = true; }, 10000);
 }]);  

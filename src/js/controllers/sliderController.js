@@ -1,5 +1,5 @@
 //Content controller FOR SLIDER
-app.controller('Content', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http, $stateParams) {
+app.controller('sliderController', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http, $stateParams) {
   $http.get('wp-json/wp/v2/posts?filter[name]=' + $routeParams.slug).success(function(res){
     $scope.post = res[0];
     document.querySelector('title').innerHTML = res.title + ' | AngularJS Demo Theme';

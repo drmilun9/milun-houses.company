@@ -1,5 +1,5 @@
 describe("it should test main Filter", function(){
-	describe("Testing expCtrl", function(){
+	describe("Testing mainFilter", function(){
        beforeEach(module("site"));
        
        var $filter;
@@ -13,13 +13,9 @@ describe("it should test main Filter", function(){
         }); 
 
 
-
-       //inject $filter to our test
-    it('should be defined', (function() { 
+    it('should be not equal null', (function() { 
         expect($filter('mainFilter')).not.toBeNull();
     }));
-
-
 
     });
 });

@@ -1,8 +1,6 @@
 var gulp 			= require('gulp');
      watch          = require('gulp-watch');
-var clean 			= require('gulp-clean');
 var concat 			= require('gulp-concat');
-var ngdocs 			= require('gulp-ngdocs');
 var sass 			= require('gulp-sass');
 var uglify 			= require('gulp-uglify');
 var htmlmin         = require('gulp-htmlmin');

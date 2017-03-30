@@ -8,7 +8,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	})
     .when('/', {
    		templateUrl: "wp-content/themes/ang-free-tut/src/partials/main.html",
-   		controller: 'Content'
+   		controller: 'sliderController'
    	})
 	
 	.otherwise({
