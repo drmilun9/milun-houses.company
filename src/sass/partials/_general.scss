@@ -27,6 +27,10 @@ body {
 	margin-bottom:70px !important;
 }
 
+.pagination{
+	margin-left:30%;
+}
+
  .thumbnail{
  	position: relative;
  	   
@@ -78,10 +82,16 @@ body {
 	 	  
 	 }  
 }  
-
+ 
 
 @media screen and (max-width: 468px) {
-    
+    .spinner {
+		  background-image: url(src/images/ajax-loader.gif);
+		  background-repeat: no-repeat;
+		  background-position: left top;
+		  padding-top: 100px;
+		  margin-top: 80px !important;
+		  margin-left: 35% !important; }
 
      .thumbnail{
 	 	position: relative;
@@ -92,10 +102,11 @@ body {
 	 	   margin-left: 0%;
 	 	  }
 	 	  
-	 }  
+	 } 
+
+  .pagination{
+	margin-left:20% !important;
+  } 
 }  
 
 
-.pagination{
-	margin-left:30%;
-}

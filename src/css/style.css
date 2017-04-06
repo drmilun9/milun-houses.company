@@ -18,6 +18,9 @@ body {
   margin-top: 70px !important;
   margin-bottom: 70px !important; }
 
+.pagination {
+  margin-left: 30%; }
+
 .thumbnail {
   position: relative; }
   .thumbnail div img,
@@ -48,15 +51,21 @@ body {
       margin-left: 30%; } }
 
 @media screen and (max-width: 468px) {
+  .spinner {
+    background-image: url(src/images/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: left top;
+    padding-top: 100px;
+    margin-top: 80px !important;
+    margin-left: 35% !important; }
   .thumbnail {
     position: relative; }
     .thumbnail div img,
     .thumbnail div h3,
     .thumbnail div button {
-      margin-left: 0%; } }
-
-.pagination {
-  margin-left: 30%; }
+      margin-left: 0%; }
+  .pagination {
+    margin-left: 20% !important; } }
 
 .slick-prev {
   position: absolute;
@@ -88,6 +97,17 @@ ul.slick-dots li {
     -moz-border-radius: 5px;
     border-radius: 5px;
     background-color: lightblue; }
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10+ CSS styles go here */
+  .slick-next {
+    position: absolute;
+    margin-left: 74%;
+    background-color: blue;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    color: white; } }
 
 @media screen and (max-width: 1200px) {
   .slick-prev {

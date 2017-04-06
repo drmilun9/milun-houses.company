@@ -34,7 +34,21 @@ ul.slick-dots li{
         }
 
 }
- 
+
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+/* IE10+ CSS styles go here */
+   .slick-next{
+      position: absolute;
+      margin-left:74%;
+      background-color: blue;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      color: white; 
+  }
+}
+  
 
 @media screen and (max-width: 1200px) {
     .slick-prev{
