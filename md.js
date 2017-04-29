@@ -27,7 +27,7 @@ app.service("myService", ["$http" , "$q",   function($http , $q ){
 
 		     var deferred = $q.defer();
 
-		     $http.get("wp-json/wp/v2/posts/?per_page=20")
+		     $http.get("wp-json/wp/v2/posts/?per_page=10")
 
 		       .success(function(data) { 
 

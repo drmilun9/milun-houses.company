@@ -99,7 +99,7 @@ gulp.task("devCSS", function(){
 
 
 gulp.task("default", function(callback){
-     gulpSequence("minify","devJS","devDeps", "devCSS","sass","tdd", callback);
+     gulpSequence("minify","devJS","devDeps", "sass", "devCSS", "tdd", callback);
 });
 
 gulp.task("watch", function(){

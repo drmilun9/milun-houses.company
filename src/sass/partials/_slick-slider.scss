@@ -1,39 +1,33 @@
-.slick-prev{
+.slick-prev {
   position: absolute;
-  margin-left:26%;
-   background-color: blue;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  color: white; 
-}
-.slick-next{
-  position: absolute;
-  margin-left:69%;
+  margin-left: 30%;
   background-color: blue;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  color: white; 
-}
-ul.slick-dots li{
+  color: white; }
+
+.slick-next {
+  position: absolute;
+  margin-left: 65%;
+  background-color: blue;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: white; }
+
+ul.slick-dots li {
   position: relative;
   list-style-type: none;
   margin-top: 0px;
-  margin-left: 31%;
-   
-
-
-         button{
-           float: left !important;
-           display: inline !important;
-           -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
-            background-color: lightblue;
-        }
-
-}
+  margin-left: 38%; }
+  ul.slick-dots li button {
+    float: left !important;
+    display: inline !important;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: lightblue; }
 
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
